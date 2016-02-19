@@ -118,7 +118,7 @@ if [ ${VERBOSE} -eq 1 ]; then
   echo "`${SUDO} ${IPA_CTL} status`"
 fi
 
-IPA=(`${SUDO} ${IPA_CTL} status | grep -v 'must be running' | awk '{ print $1,$3 }'`)
+IPA=(`${SUDO} ${IPA_CTL} status 2>/dev/null | grep -v 'must be running' | awk '{ print $1,$3 }'`)
 if [ $? -ne 0 ]; then
 	echo "IPA UNKNOWN: ${IPA[*]}"
 	exit ${STATUS_UNKNOWN}
